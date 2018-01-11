@@ -1,0 +1,39 @@
+{
+  "name": "jsonfix",
+  "version": "0.0.1",
+  "description": "JSON fixer for human",
+  "main": "index.js",
+  "bin": {
+    "jsonfix": "bin/main.js"
+  },
+  "scripts": {
+    "build": "tsc --pretty -p .",
+    "watch": "tsc --pretty -p . --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhysd/jsonfix.git"
+  },
+  "keywords": [
+    "json",
+    "fixer",
+    "formatter"
+  ],
+  "author": "rhysd <lin90162@yahoo.co.jp>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rhysd/jsonfix/issues"
+  },
+  "homepage": "https://github.com/rhysd/jsonfix#readme",
+  "devDependencies": {
+    "@types/node": "^9.3.0",
+    "@types/tmp": "0.0.33",
+    "@types/yargs": "^10.0.1",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "tmp": "0.0.33",
+    "yargs": "^10.1.1"
+  }
+}
