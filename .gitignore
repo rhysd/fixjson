@@ -1,5 +1,6 @@
 /node_modules
+/index.d.ts
+/bin/main.d.ts
 npm-debug.log
 *.js
-*.d.ts
 *.js.map

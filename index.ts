@@ -1,4 +1,4 @@
-import * as JSON5 from 'json5';
+import * as JSON5R from 'json5-relaxed';
 
 function readStdin() {
     process.stdin.setEncoding('utf8');
@@ -38,7 +38,7 @@ export default class FixJSON {
     }
 
     async runString(input: string) {
-        const obj = JSON5.parse(input);
+        const obj = JSON5R.parse(input);
         process.stdout.setEncoding('utf8');
         this.writeAsJson(process.stdout, obj);
     }
@@ -50,7 +50,7 @@ export default class FixJSON {
     }
 
     private async requireStdin() {
-        return JSON5.parse(await readStdin());
+        return JSON5R.parse(await readStdin());
     }
 }
 

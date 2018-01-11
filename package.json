@@ -1,6 +1,6 @@
 {
   "name": "fixjson",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "JSON fixer for human using JSON5",
   "main": "index.js",
   "bin": {
@@ -36,13 +36,12 @@
     "LICENSE"
   ],
   "devDependencies": {
-    "@types/json5": "0.0.29",
     "@types/node": "^9.3.0",
     "@types/yargs": "^10.0.1",
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "json5": "^0.5.1",
+    "json5-relaxed": "^0.5.1",
     "yargs": "^10.1.1"
   }
 }
