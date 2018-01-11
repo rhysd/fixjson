@@ -46,13 +46,17 @@ function writeTmpFileAsJS(f: TmpFile, content: string) {
 }
 
 export interface Config {
-    write: boolean;
-    indent: number;
-    minify: boolean;
+    write?: boolean;
+    indent?: number;
+    minify?: boolean;
 }
 
 export default class JsonFix {
-    constructor(public config: Config) {}
+    public readonly config: Config;
+
+    constructor(config?: Config) {
+        this.config = Object.assign({ write: false, indent: 2, minify: false }, config || {});
+    }
 
     async run(paths: string[]) {
         const stdin = paths.length === 0;
@@ -65,19 +69,19 @@ export default class JsonFix {
         }
     }
 
-    async writeAsJson(writer: NodeJS.WriteStream, obj: any) {
-        const { indent, minify } = this.config;
-        const level = minify ? 0 : indent || 2;
-        writer.write(JSON.stringify(obj, null, level) + '\n');
-    }
-
     async runString(input: string) {
         const obj = await this.requireString(input);
         process.stdout.setEncoding('utf8');
         this.writeAsJson(process.stdout, obj);
     }
 
-    async requireString(input: string) {
+    private async writeAsJson(writer: NodeJS.WriteStream, obj: any) {
+        const { indent, minify } = this.config;
+        const level = minify ? 0 : indent || 2;
+        writer.write(JSON.stringify(obj, null, level) + '\n');
+    }
+
+    private async requireString(input: string) {
         const file = await tmpfile();
         await writeTmpFileAsJS(file, input);
         try {
@@ -87,7 +91,7 @@ export default class JsonFix {
         }
     }
 
-    async requireStdin() {
+    private async requireStdin() {
         const [file, input] = await Promise.all([tmpfile(), readStdin()]);
         await writeTmpFileAsJS(file, input);
         try {
@@ -99,6 +103,5 @@ export default class JsonFix {
 }
 
 export function convert(input: string, config?: Config) {
-    const cfg = Object.assign({ write: false, indent: 2 }, config);
-    return new JsonFix(cfg).runString(input);
+    return new JsonFix(config).runString(input);
 }
