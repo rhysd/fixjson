@@ -48,6 +48,7 @@ function writeTmpFileAsJS(f: TmpFile, content: string) {
 export interface Config {
     write: boolean;
     indent: number;
+    minify: boolean;
 }
 
 export default class JsonFix {
@@ -65,7 +66,9 @@ export default class JsonFix {
     }
 
     async writeAsJson(writer: NodeJS.WriteStream, obj: any) {
-        writer.write(JSON.stringify(obj, null, this.config.indent || 2) + '\n');
+        const { indent, minify } = this.config;
+        const level = minify ? 0 : indent || 2;
+        writer.write(JSON.stringify(obj, null, level) + '\n');
     }
 
     async runString(input: string) {

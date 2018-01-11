@@ -6,10 +6,16 @@ import JsonFix from '..';
         .usage('Usage: $0 [-w] [paths...]')
         .option('write', {
             alias: 'w',
+            describe: 'overwrite a file instead of outputting to stdout',
+            default: false,
+        })
+        .option('minify', {
+            describe: 'disable pretty print',
             default: false,
         })
         .option('indent', {
             alias: 'i',
+            describe: 'indent of JSON output',
             default: 2,
         }).argv as any;
 
