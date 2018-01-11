@@ -68,15 +68,34 @@ export default class JsonFix {
         writer.write(JSON.stringify(obj, null, this.config.indent || 2) + '\n');
     }
 
-    async requireStdin() {
-        return Promise.all([tmpfile(), readStdin()])
-            .then(([tmpfile, input]) => writeTmpFileAsJS(tmpfile, input))
-            .then(tmpfile => {
-                try {
-                    return require(tmpfile.path);
-                } finally {
-                    tmpfile.cleanup();
-                }
-            });
+    async runString(input: string) {
+        const obj = await this.requireString(input);
+        process.stdout.setEncoding('utf8');
+        this.writeAsJson(process.stdout, obj);
     }
+
+    async requireString(input: string) {
+        const file = await tmpfile();
+        await writeTmpFileAsJS(file, input);
+        try {
+            return require(file.path);
+        } finally {
+            file.cleanup();
+        }
+    }
+
+    async requireStdin() {
+        const [file, input] = await Promise.all([tmpfile(), readStdin()]);
+        await writeTmpFileAsJS(file, input);
+        try {
+            return require(file.path);
+        } finally {
+            file.cleanup();
+        }
+    }
+}
+
+export function convert(input: string, config?: Config) {
+    const cfg = Object.assign({ write: false, indent: 2 }, config);
+    return new JsonFix(cfg).runString(input);
 }
