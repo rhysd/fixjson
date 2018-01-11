@@ -1,5 +1,4 @@
-import * as fs from 'fs';
-import * as tmp from 'tmp';
+import * as vm from 'vm';
 
 function readStdin() {
     process.stdin.setEncoding('utf8');
@@ -10,37 +9,6 @@ function readStdin() {
         });
         process.stdin.on('end', () => {
             resolve(buf);
-        });
-    });
-}
-
-interface TmpFile {
-    path: string;
-    fd: number;
-    cleanup: () => void;
-}
-
-function tmpfile() {
-    return new Promise<TmpFile>((resolve, reject) => {
-        tmp.file({ postfix: '.js' }, (err, path, fd, cleanup) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ path, fd, cleanup });
-            }
-        });
-    });
-}
-
-function writeTmpFileAsJS(f: TmpFile, content: string) {
-    return new Promise<TmpFile>((resolve, reject) => {
-        let src = 'module.exports = ' + content;
-        fs.write(f.fd, src, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(f);
-            }
         });
     });
 }
@@ -70,7 +38,7 @@ export default class JsonFix {
     }
 
     async runString(input: string) {
-        const obj = await this.requireString(input);
+        const obj = this.safeEval(input);
         process.stdout.setEncoding('utf8');
         this.writeAsJson(process.stdout, obj);
     }
@@ -81,24 +49,14 @@ export default class JsonFix {
         writer.write(JSON.stringify(obj, null, level) + '\n');
     }
 
-    private async requireString(input: string) {
-        const file = await tmpfile();
-        await writeTmpFileAsJS(file, input);
-        try {
-            return require(file.path);
-        } finally {
-            file.cleanup();
-        }
+    private safeEval(src: string) {
+        const ctx = vm.createContext(undefined);
+        vm.runInNewContext('JSONFIX_CONVERTED_RESULT = ' + src, ctx);
+        return (ctx as any).JSONFIX_CONVERTED_RESULT;
     }
 
     private async requireStdin() {
-        const [file, input] = await Promise.all([tmpfile(), readStdin()]);
-        await writeTmpFileAsJS(file, input);
-        try {
-            return require(file.path);
-        } finally {
-            file.cleanup();
-        }
+        return this.safeEval(await readStdin());
     }
 }
 

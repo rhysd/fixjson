@@ -30,12 +30,10 @@
   "homepage": "https://github.com/rhysd/jsonfix#readme",
   "devDependencies": {
     "@types/node": "^9.3.0",
-    "@types/tmp": "0.0.33",
     "@types/yargs": "^10.0.1",
     "typescript": "^2.6.2"
   },
   "dependencies": {
-    "tmp": "0.0.33",
     "yargs": "^10.1.1"
   }
 }
