@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import * as yargs from 'yargs';
-import JsonFiver from '..';
+import FixJSON from '..';
 
 (async () => {
     const argv = yargs
@@ -22,7 +22,7 @@ import JsonFiver from '..';
         }).argv as any;
 
     try {
-        await new JsonFiver(argv).run(argv._);
+        await new FixJSON(argv).run(argv._);
     } catch (e) {
         console.error('Error:', e.message);
         process.exit(1);

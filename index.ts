@@ -19,7 +19,7 @@ export interface Config {
     minify?: boolean;
 }
 
-export default class JsonFiver {
+export default class FixJSON {
     public readonly config: Config;
 
     constructor(config?: Config) {
@@ -54,6 +54,8 @@ export default class JsonFiver {
     }
 }
 
-export function convert(input: string, config?: Config) {
-    return new JsonFiver(config).runString(input);
+export function fix(input: string, config?: Config) {
+    return new FixJSON(config).runString(input);
 }
+
+// TODO: export function fixFile

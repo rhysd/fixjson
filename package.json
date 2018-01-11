@@ -1,10 +1,10 @@
 {
-  "name": "jsonfiver",
+  "name": "fixjson",
   "version": "0.0.4",
   "description": "JSON fixer for human using JSON5",
   "main": "index.js",
   "bin": {
-    "jsonfiver": "./bin/main.js"
+    "fixjson": "./bin/main.js"
   },
   "scripts": {
     "build": "tsc --pretty -p .",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rhysd/jsonfiver.git"
+    "url": "git+https://github.com/rhysd/fixjson.git"
   },
   "keywords": [
     "json",
@@ -26,9 +26,9 @@
   "author": "rhysd <lin90162@yahoo.co.jp>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rhysd/jsonfiver/issues"
+    "url": "https://github.com/rhysd/fixjson/issues"
   },
-  "homepage": "https://github.com/rhysd/jsonfiver#readme",
+  "homepage": "https://github.com/rhysd/fixjson#readme",
   "files": [
     "bin/main.js",
     "index.js",
