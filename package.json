@@ -28,6 +28,12 @@
     "url": "https://github.com/rhysd/jsonfix/issues"
   },
   "homepage": "https://github.com/rhysd/jsonfix#readme",
+  "files": [
+    "bin/main.js",
+    "index.js",
+    "index.d.ts",
+    "LICENSE"
+  ],
   "devDependencies": {
     "@types/node": "^9.3.0",
     "@types/yargs": "^10.0.1",
