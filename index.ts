@@ -19,7 +19,7 @@ export interface Config {
     minify?: boolean;
 }
 
-export default class JsonFix {
+export default class JsonFiver {
     public readonly config: Config;
 
     constructor(config?: Config) {
@@ -61,5 +61,5 @@ export default class JsonFix {
 }
 
 export function convert(input: string, config?: Config) {
-    return new JsonFix(config).runString(input);
+    return new JsonFiver(config).runString(input);
 }

@@ -1,5 +1,5 @@
 import * as yargs from 'yargs';
-import JsonFix from '..';
+import JsonFiver from '..';
 
 (async () => {
     const argv = yargs
@@ -20,7 +20,7 @@ import JsonFix from '..';
         }).argv as any;
 
     try {
-        await new JsonFix(argv).run(argv._);
+        await new JsonFiver(argv).run(argv._);
     } catch (e) {
         console.error('Error:', e.message);
         process.exit(1);
