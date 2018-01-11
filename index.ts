@@ -1,4 +1,4 @@
-import * as vm from 'vm';
+import * as JSON5 from 'json5';
 
 function readStdin() {
     process.stdin.setEncoding('utf8');
@@ -38,7 +38,7 @@ export default class JsonFiver {
     }
 
     async runString(input: string) {
-        const obj = this.safeEval(input);
+        const obj = JSON5.parse(input);
         process.stdout.setEncoding('utf8');
         this.writeAsJson(process.stdout, obj);
     }
@@ -49,14 +49,8 @@ export default class JsonFiver {
         writer.write(JSON.stringify(obj, null, level) + '\n');
     }
 
-    private safeEval(src: string) {
-        const ctx = vm.createContext(undefined);
-        vm.runInNewContext('JSONFIX_CONVERTED_RESULT = ' + src, ctx);
-        return (ctx as any).JSONFIX_CONVERTED_RESULT;
-    }
-
     private async requireStdin() {
-        return this.safeEval(await readStdin());
+        return JSON5.parse(await readStdin());
     }
 }
 
