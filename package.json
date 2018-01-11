@@ -1,10 +1,10 @@
 {
   "name": "jsonfiver",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "JSON fixer for human using JSON5",
   "main": "index.js",
   "bin": {
-    "jsonfiver": "node bin/main.js"
+    "jsonfiver": "./bin/main.js"
   },
   "scripts": {
     "build": "tsc --pretty -p .",
