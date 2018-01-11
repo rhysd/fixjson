@@ -9,7 +9,9 @@
   "scripts": {
     "build": "tsc --pretty -p .",
     "watch": "tsc --pretty -p . --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "decls": "tsc --pretty -p . --declaration",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preversion": "npm run build && npm run decls"
   },
   "repository": {
     "type": "git",
