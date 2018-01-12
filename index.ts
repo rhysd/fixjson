@@ -76,15 +76,15 @@ export default class FixJSON {
         this.config = Object.assign({ write: false, indent: 2, minify: false }, config || {});
     }
 
-    async fix(paths: string[]) {
-        const stdin = paths.length === 0;
+    async main(argv: string[]) {
+        const stdin = argv.length === 0;
         if (stdin) {
             const src = await this.parseStdin();
             process.stdout.setEncoding('utf8');
             process.stdout.write(this.unparse(src.parsed));
             return;
         }
-        await this.fixFiles(await globAll(paths));
+        await this.fixFiles(await globAll(argv));
     }
 
     async fixFiles(paths: string[]) {

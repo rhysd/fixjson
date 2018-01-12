@@ -30,7 +30,7 @@ import FixJSON, { Config } from '..';
         }).argv;
 
     try {
-        await new FixJSON(argv as Config).fix(argv._);
+        await new FixJSON(argv as Config).main(argv._);
     } catch (e) {
         console.error('Error:', e.message);
         process.exit(1);
