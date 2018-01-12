@@ -19,10 +19,14 @@ import FixJSON from '..';
             alias: 'i',
             describe: 'indent of JSON output',
             default: 2,
+        })
+        .option('stdin-filename', {
+            describe: 'assuming a file name when reading from stdin',
+            default: undefined,
         }).argv as any;
 
     try {
-        await new FixJSON(argv).run(argv._);
+        await new FixJSON(argv).fix(argv._);
     } catch (e) {
         console.error('Error:', e.message);
         process.exit(1);
