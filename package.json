@@ -10,8 +10,9 @@
     "build": "tsc --pretty -p .",
     "watch": "tsc --pretty -p . --watch",
     "decls": "tsc --pretty -p . --declaration",
+    "lint": "tslint -p .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preversion": "npm run build && npm run decls"
+    "preversion": "npm run build && npm run lint && npm run decls"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,7 @@
     "@types/glob": "^5.0.34",
     "@types/node": "^9.3.0",
     "@types/yargs": "^10.0.1",
+    "tslint": "^5.9.1",
     "typescript": "^2.6.2"
   },
   "dependencies": {

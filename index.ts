@@ -73,7 +73,7 @@ export default class FixJSON {
     public readonly config: Config;
 
     constructor(config?: Config) {
-        this.config = Object.assign({ write: false, indent: 2, minify: false }, config || {});
+        this.config = { write: false, indent: 2, minify: false, ...config };
     }
 
     async main(argv: string[]) {
