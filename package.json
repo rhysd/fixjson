@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "glob": "^7.1.2",
-    "json5-relaxed": "^0.5.1",
+    "json5-relaxed": "^0.5.3",
     "yargs": "^10.1.1"
   }
 }

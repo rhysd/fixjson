@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import * as yargs from 'yargs';
-import FixJSON from '..';
+import FixJSON, { Config } from '..';
 
 (async () => {
     const argv = yargs
@@ -9,24 +9,28 @@ import FixJSON from '..';
         .option('write', {
             alias: 'w',
             describe: 'overwrite a file instead of outputting to stdout',
+            type: 'boolean',
             default: false,
         })
         .option('minify', {
             describe: 'disable pretty print',
+            type: 'boolean',
             default: false,
         })
         .option('indent', {
             alias: 'i',
             describe: 'indent of JSON output',
+            type: 'number',
             default: 2,
         })
         .option('stdin-filename', {
             describe: 'assuming a file name when reading from stdin',
+            type: 'string',
             default: undefined,
-        }).argv as any;
+        }).argv;
 
     try {
-        await new FixJSON(argv).fix(argv._);
+        await new FixJSON(argv as Config).fix(argv._);
     } catch (e) {
         console.error('Error:', e.message);
         process.exit(1);
