@@ -106,7 +106,9 @@ export default class FixJSON {
         const stdin = argv.length === 0;
         if (stdin) {
             const src = await this.parseStdin();
-            process.stdout.setEncoding('utf8');
+            if (process.stdout.setEncoding) {
+                process.stdout.setEncoding('utf8');
+            }
             process.stdout.write(this.unparse(src));
             return 1;
         }
@@ -117,7 +119,7 @@ export default class FixJSON {
 
     async fixFiles(paths: string[]) {
         const parsed = Promise.all(paths.map(p => this.parseFile(p)));
-        if (!this.config.write) {
+        if (!this.config.write && process.stdout.setEncoding) {
             process.stdout.setEncoding('utf8');
         }
         for (const src of await parsed) {

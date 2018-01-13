@@ -12,6 +12,9 @@ fixjson provides:
   - Adds quotes to keys in objects
   - Newlines in strings
   - Hex numbers
+  - Fixes single quotes to double quotes
+
+fixjson reads input as [relaxed json][forked json5] and outputs it as formatted JSON.
 
 ## Fix Screenshots
 
@@ -43,4 +46,4 @@ Please see `fixjson --help` for more details.
 Distributed under the MIT License. Please see [LICENSE](LICENSE).
 
 [fixjson]: https://www.npmjs.com/package/fixjson
-
+[forked json5]: https://github.com/rhysd/json5
