@@ -17,6 +17,8 @@
   "files": [
     "index.ts",
     "bin/main.ts",
-    "json5-relaxed.d.ts"
+    "json5-relaxed.d.ts",
+    "test/valid_json_test.ts",
+    "test/invalid_json_test.ts"
   ]
 }

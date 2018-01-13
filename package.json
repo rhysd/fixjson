@@ -11,8 +11,9 @@
     "watch": "tsc --pretty -p . --watch",
     "decls": "tsc --pretty -p . --declaration",
     "lint": "tslint -p .",
+    "collect-realworld-files": "github-clone-all -extract '\\.json$' -dest test/data/realworld 'json parser'",
     "profile": "rm -f isolate-0x*-v8.log && node --prof ./bin/main.js package.json && node --prof-process isolate-0x*-v8.log > profile.txt",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/*.js",
     "preversion": "npm run build && npm run lint && npm run decls"
   },
   "repository": {
@@ -40,8 +41,10 @@
   "devDependencies": {
     "@types/detect-indent": "^5.0.0",
     "@types/glob": "^5.0.34",
+    "@types/mocha": "^2.2.46",
     "@types/node": "^9.3.0",
     "@types/yargs": "^10.0.1",
+    "mocha": "^4.1.0",
     "tslint": "^5.9.1",
     "typescript": "^2.6.2"
   },
