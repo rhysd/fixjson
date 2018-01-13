@@ -6,9 +6,9 @@ JSON fixer for Humans
 fixjson provides:
 
 - Pretty-prints JSON input
-- Fixes varios failures while humans writing JSON
+- Fixes various failures while humans writing JSON
   - Fixes trailing commas objects or arrays
-  - Fixes missing commas of elements of objects or arrays
+  - Fixes missing commas for elements of objects or arrays
   - Adds quotes to keys in objects
   - Newlines in strings
   - Hex numbers
@@ -25,7 +25,7 @@ When moving a line to another line, you no longer need to care about a trailing 
 
 ![modify keys](https://github.com/rhysd/ss/blob/master/fixjson/modifykeys.gif)
 
-And you also don't need to care about a trailing comma of previous line when adding a new element
+And you also don't need to care about a trailing comma of a previous line when adding a new element
 to an object or an array:
 
 ![modify keys](https://github.com/rhysd/ss/blob/master/fixjson/addkey.gif)
