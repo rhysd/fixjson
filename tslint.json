@@ -111,10 +111,7 @@
     "no-unnecessary-type-assertion": true,
     "no-floating-promises": true,
     "no-for-in-array": true,
-    "no-void-expression": [
-      true,
-      "ignore-arrow-function-shorthand"
-    ],
+    "no-void-expression": false,
     "use-default-type-parameter": true,
     "deprecation": true,
     "no-unnecessary-qualifier": true,

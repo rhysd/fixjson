@@ -13,6 +13,8 @@ If --indent (or -i) option is not given, indent level is automatically detected.
 
 For more detail please visit https://github.com/rhysd/fixjson.`;
 
+/* tslint:disable:no-console */
+
 /* tslint:disable:no-floating-promises */
 (async () => {
     /* tslint:enable:no-floating-promises */
@@ -40,13 +42,14 @@ For more detail please visit https://github.com/rhysd/fixjson.`;
                 describe: 'assuming a file name when reading from stdin',
                 type: 'string',
                 default: undefined,
-            }).argv;
+            }).argv as Config & yargs.Arguments;
 
-        await new FixJSON(argv as Config).main(argv._);
+        const numFormatted = await new FixJSON(argv).main(argv._);
+        if (argv._.length > 0 && argv.write) {
+            console.log('formatted', numFormatted, 'file(s)');
+        }
     } catch (e) {
-        /* tslint:disable:no-console */
         console.error('Error:', e.message);
-        /* tslint:enable:no-console */
         process.exit(1);
     }
 })();

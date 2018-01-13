@@ -108,9 +108,11 @@ export default class FixJSON {
             const src = await this.parseStdin();
             process.stdout.setEncoding('utf8');
             process.stdout.write(this.unparse(src));
-            return;
+            return 1;
         }
-        await this.fixFiles(await globAll(argv));
+        const files = await globAll(argv);
+        await this.fixFiles(files);
+        return files.length;
     }
 
     async fixFiles(paths: string[]) {
