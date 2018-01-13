@@ -20,6 +20,7 @@
     "json5-relaxed.d.ts",
     "test/valid_json_test.ts",
     "test/invalid_json_test.ts",
-    "test/paths_test.ts"
+    "test/paths_test.ts",
+    "test/realworld_test.ts"
   ]
 }

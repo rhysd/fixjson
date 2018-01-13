@@ -11,7 +11,7 @@
     "watch": "tsc --pretty -p . --watch",
     "decls": "tsc --pretty -p . --declaration",
     "lint": "tslint -p .",
-    "collect-realworld-files": "github-clone-all -extract '\\.json$' -dest test/data/realworld 'json parser'",
+    "collect-realworld-json": "github-clone-all -extract '\\.json$' -dest test/data/realworld 'json parser'",
     "profile": "rm -f isolate-0x*-v8.log && node --prof ./bin/main.js package.json && node --prof-process isolate-0x*-v8.log > profile.txt",
     "test": "mocha test/*.js",
     "preversion": "npm run build && npm run lint && npm run decls"
