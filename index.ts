@@ -32,30 +32,54 @@ function write(writer: NodeJS.WritableStream, chunk: string) {
     return new Promise(resolve => writer.write(chunk, 'utf8', resolve));
 }
 
-function globAll(pats: string[]): Promise<string[]> {
+function isDirectory(path: string) {
+    return new Promise<boolean>((resolve, reject) => {
+        fs.stat(path, (err, stat) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(stat.isDirectory());
+            }
+        });
+    });
+}
+
+function globPath(path: string) {
+    return new Promise<string[]>((resolve, reject) => {
+        glob(path, (err, p) => (err ? reject(err) : resolve(p)));
+    });
+}
+
+async function globOne(pattern: string): Promise<string[]> {
+    const globbed = await globPath(pattern);
+
+    const paths = [];
+    for (const path of globbed) {
+        if (!await isDirectory(path)) {
+            paths.push(path);
+        }
+        let pat = path;
+        if (pat[pat.length - 1] !== '/') {
+            pat += '/';
+        }
+        pat += '**/*.json';
+        Array.prototype.push.apply(paths, await globPath(pat));
+    }
+    return paths;
+}
+
+async function globAll(pats: string[]): Promise<string[]> {
     if (pats.length === 0) {
         // shortcut
-        return Promise.resolve([]);
+        return [];
     }
-    const ps = pats.map(
-        pat =>
-            new Promise<string[]>((resolve, reject) => {
-                glob(pat, (err, matched) => {
-                    if (err) {
-                        reject(err);
-                        return;
-                    }
-                    resolve(matched);
-                });
-            }),
-    );
-    return Promise.all(ps).then((matched: string[][]) => {
-        const flatten = [] as string[];
-        for (const m of matched) {
-            Array.prototype.push.apply(flatten, m);
-        }
-        return flatten;
-    });
+
+    // flatten
+    const paths: string[] = [];
+    for (const p of await Promise.all(pats.map(globOne))) {
+        Array.prototype.push.apply(paths, p);
+    }
+    return paths;
 }
 
 export interface Config {
