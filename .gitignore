@@ -1,6 +1,8 @@
 /node_modules
 /index.d.ts
 /bin/main.d.ts
+/profile.txt
 npm-debug.log
+isolate-0x*-v8.log
 *.js
 *.js.map

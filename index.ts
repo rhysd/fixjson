@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as JSON5R from 'json5-relaxed';
 import * as glob from 'glob';
+import * as detectIndent from 'detect-indent';
 
 function readStdin() {
     process.stdin.setEncoding('utf8');
@@ -67,13 +68,14 @@ export interface Config {
 interface Parsed {
     name: string;
     parsed: any;
+    indent: string;
 }
 
 export default class FixJSON {
     public readonly config: Config;
 
     constructor(config?: Config) {
-        this.config = { write: false, indent: 2, minify: false, ...config };
+        this.config = { write: false, minify: false, ...config };
     }
 
     async main(argv: string[]) {
@@ -81,7 +83,7 @@ export default class FixJSON {
         if (stdin) {
             const src = await this.parseStdin();
             process.stdout.setEncoding('utf8');
-            process.stdout.write(this.unparse(src.parsed));
+            process.stdout.write(this.unparse(src));
             return;
         }
         await this.fixFiles(await globAll(argv));
@@ -94,34 +96,40 @@ export default class FixJSON {
         }
         for (const src of await parsed) {
             const writer = this.config.write ? fs.createWriteStream(src.name) : process.stdout;
-            await write(writer, this.unparse(src.parsed));
+            await write(writer, this.unparse(src));
         }
     }
 
     convertString(input: string): string {
-        return this.unparse(JSON5R.parse(input));
+        return this.unparse({ name: '', parsed: JSON5R.parse(input), indent: this.indent(input) });
     }
 
     async convertFile(path: string): Promise<string> {
         return this.unparse(await this.parseFile(path));
     }
 
-    private unparse(obj: any): string {
+    private indent(code: string) {
         const { indent, minify } = this.config;
-        const level = minify ? 0 : indent || 2;
-        return JSON.stringify(obj, null, level) + '\n';
+        const spaces = minify ? '' : indent ? ' '.repeat(indent) : detectIndent(code).indent;
+        return spaces || '  ';
+    }
+
+    private unparse(src: Parsed): string {
+        return JSON.stringify(src.parsed, null, src.indent) + '\n';
     }
 
     private async parseStdin(): Promise<Parsed> {
         const name = this.config.stdinFilename || '<stdin>';
-        const parsed = JSON5R.parse(await readStdin());
-        return { name, parsed };
+        const code = await readStdin();
+        const parsed = JSON5R.parse(code);
+        return { name, parsed, indent: this.indent(code) };
     }
 
     private async parseFile(path: string): Promise<Parsed> {
         const code = await readFile(path);
         const parsed = JSON5R.parse(code);
-        return { name: path, parsed };
+        const indent = detectIndent(code).indent || '  ';
+        return { name: path, parsed, indent };
     }
 }
 

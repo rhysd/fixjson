@@ -9,11 +9,13 @@ JSON fixer for Humans using (relaxed) JSON5. If no path is given, it reads from 
 
 In addition, input JSON5 string can be relaxed. Missing commas are allowed in objects and arrays. String literals can contain newlines. Note that NaN and Infinity as number are not permitted.
 
+If --indent (or -i) option is not given, indent level is automatically detected.
+
 For more detail please visit https://github.com/rhysd/fixjson.`;
 
 /* tslint:disable:no-floating-promises */
 (async () => {
-/* tslint:enable:no-floating-promises */
+    /* tslint:enable:no-floating-promises */
     try {
         const argv = yargs
             .usage(USAGE)
@@ -32,7 +34,7 @@ For more detail please visit https://github.com/rhysd/fixjson.`;
                 alias: 'i',
                 describe: 'indent of JSON output',
                 type: 'number',
-                default: 2,
+                default: undefined,
             })
             .option('stdin-filename', {
                 describe: 'assuming a file name when reading from stdin',

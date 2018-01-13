@@ -1,6 +1,6 @@
 {
   "name": "fixjson",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "JSON fixer for human using JSON5",
   "main": "index.js",
   "bin": {
@@ -11,6 +11,7 @@
     "watch": "tsc --pretty -p . --watch",
     "decls": "tsc --pretty -p . --declaration",
     "lint": "tslint -p .",
+    "profile": "rm -f isolate-0x*-v8.log && node --prof ./bin/main.js package.json && node --prof-process isolate-0x*-v8.log > profile.txt",
     "test": "echo \"Error: no test specified\" && exit 1",
     "preversion": "npm run build && npm run lint && npm run decls"
   },
@@ -37,6 +38,7 @@
     "LICENSE"
   ],
   "devDependencies": {
+    "@types/detect-indent": "^5.0.0",
     "@types/glob": "^5.0.34",
     "@types/node": "^9.3.0",
     "@types/yargs": "^10.0.1",
@@ -44,6 +46,7 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
+    "detect-indent": "^5.0.0",
     "glob": "^7.1.2",
     "json5-relaxed": "^0.5.3",
     "yargs": "^10.1.1"
