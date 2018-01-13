@@ -3,7 +3,7 @@ import * as JSON5R from 'json5-relaxed';
 import * as glob from 'glob';
 import * as detectIndent from 'detect-indent';
 
-function readStdin() {
+function readFromStdin() {
     process.stdin.setEncoding('utf8');
     return new Promise<string>(resolve => {
         let buf = '';
@@ -87,6 +87,7 @@ export interface Config {
     indent?: number;
     minify?: boolean;
     stdinFilename?: string;
+    stdout?: NodeJS.WriteStream;
 }
 
 interface Parsed {
@@ -97,19 +98,21 @@ interface Parsed {
 
 export default class FixJSON {
     public readonly config: Config;
+    private stdout: NodeJS.WriteStream;
 
     constructor(config?: Config) {
-        this.config = { write: false, minify: false, ...config };
+        this.config = { write: false, minify: false, stdout: process.stdout, ...config };
+        this.stdout = this.config.stdout || process.stdout;
     }
 
     async main(argv: string[]) {
         const stdin = argv.length === 0;
         if (stdin) {
             const src = await this.parseStdin();
-            if (process.stdout.setEncoding) {
-                process.stdout.setEncoding('utf8');
+            if (this.stdout.setEncoding) {
+                this.stdout.setEncoding('utf8');
             }
-            process.stdout.write(this.unparse(src));
+            this.stdout.write(this.unparse(src));
             return 1;
         }
         const files = await globAll(argv);
@@ -119,11 +122,11 @@ export default class FixJSON {
 
     async fixFiles(paths: string[]) {
         const parsed = Promise.all(paths.map(p => this.parseFile(p)));
-        if (!this.config.write && process.stdout.setEncoding) {
-            process.stdout.setEncoding('utf8');
+        if (!this.config.write && this.stdout.setEncoding) {
+            this.stdout.setEncoding('utf8');
         }
         for (const src of await parsed) {
-            const writer = this.config.write ? fs.createWriteStream(src.name) : process.stdout;
+            const writer = this.config.write ? fs.createWriteStream(src.name) : this.stdout;
             await write(writer, this.unparse(src));
         }
     }
@@ -148,7 +151,7 @@ export default class FixJSON {
 
     private async parseStdin(): Promise<Parsed> {
         const name = this.config.stdinFilename || '<stdin>';
-        const code = await readStdin();
+        const code = await readFromStdin();
         const parsed = JSON5R.parse(code);
         return { name, parsed, indent: this.indent(code) };
     }
