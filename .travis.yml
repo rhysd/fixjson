@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+  - 'stable'
+
+install:
+  - npm install
+
+script:
+  - npm run build
+  - npm run lint
+  - bash ./scripts/collect-repos-simple.bash
+  - npm run test
