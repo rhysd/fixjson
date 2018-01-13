@@ -1,6 +1,6 @@
 {
   "name": "fixjson",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "description": "JSON fixer for humans using (relaxed) JSON5",
   "main": "index.js",
   "bin": {
@@ -13,8 +13,9 @@
     "lint": "tslint -p .",
     "collect-realworld-json": "github-clone-all -extract '\\.json$' -dest test/data/realworld 'json parser'",
     "profile": "rm -f isolate-0x*-v8.log && node --prof ./bin/main.js package.json && node --prof-process isolate-0x*-v8.log > profile.txt",
+    "coverage": "nyc mocha test/*.js",
     "test": "mocha test/*.js",
-    "preversion": "npm run build && npm run lint && npm run decls"
+    "preversion": "npm run build && npm run lint && npm test && npm run decls"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,7 @@
     "@types/node": "^9.3.0",
     "@types/yargs": "^10.0.1",
     "mocha": "^4.1.0",
+    "nyc": "^11.4.1",
     "tslint": "^5.9.1",
     "typescript": "^2.6.2"
   },

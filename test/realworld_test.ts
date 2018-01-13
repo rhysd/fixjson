@@ -6,12 +6,7 @@ import FixJSON from '..';
 
 describe('JSON files in real world', function() {
     const files = glob.sync(path.join(__dirname, 'data/realworld/**/*.json'));
-    if (files.length === 0) {
-        it('skipped because test/data/realworld is empty. Please run collect-realworld-json to collect real world JSON files', function() {
-            this.skip();
-        });
-        return;
-    }
+    files.push(path.join(__dirname, '../package.json'));
 
     const fixer = new FixJSON();
     for (const file of files) {
