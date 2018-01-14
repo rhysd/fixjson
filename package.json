@@ -14,7 +14,7 @@
     "collect-realworld-json": "github-clone-all -extract '\\.json$' -dest test/data/realworld 'json parser'",
     "profile": "rm -f isolate-0x*-v8.log && node --prof ./bin/main.js package.json && node --prof-process isolate-0x*-v8.log > profile.txt",
     "coverage": "nyc mocha test/*.js",
-    "test": "mocha test/*.js",
+    "test": "mocha test",
     "preversion": "npm run build && npm run lint && npm test && npm run decls"
   },
   "repository": {
