@@ -1,5 +1,6 @@
 JSON fixer for Humans
 =====================
+[![travis ci badge][]][travis ci]
 
 [fixjson][] is a source code fixer for humans using (relaxed) JSON5.
 
@@ -28,27 +29,27 @@ When moving a line to another line, you no longer need to care about a trailing 
 And you also don't need to care about a trailing comma of a previous line when adding a new element
 to an object or an array:
 
-![modify keys](https://github.com/rhysd/ss/blob/master/fixjson/addkey.gif)
+![add key](https://github.com/rhysd/ss/blob/master/fixjson/addkey.gif)
 
 When adding a new key-value to an object, quotes of the key are fixed. And single quotes for strings
 are also fixed to double quotes:
 
-![modify keys](https://github.com/rhysd/ss/blob/master/fixjson/keyquotes.gif)
+![key quotes](https://github.com/rhysd/ss/blob/master/fixjson/keyquotes.gif)
 
 JSON string does not allow multi-line string. `\n` is required to embed multi-line string to JSON.
 fixjson automatically fixes newlines in strings. This is useful when copy&paste some string to JSON
 file:
 
-![modify keys](https://github.com/rhysd/ss/blob/master/fixjson/newlines.gif)
+![newlines in string](https://github.com/rhysd/ss/blob/master/fixjson/newlines.gif)
 
 JSON only accepts decimal digits for numbers. fixjson automatically converts `0x` hex numbers to
 decimal numbers. You no longer need to convert hex numbers manually:
 
-![modify keys](https://github.com/rhysd/ss/blob/master/fixjson/number.gif)
+![hex numbebr](https://github.com/rhysd/ss/blob/master/fixjson/number.gif)
 
 And of course it pretty-prints the JSON code, with automatic indent detection:
 
-![modify keys](https://github.com/rhysd/ss/blob/master/fixjson/prettyprint.gif)
+![pretty printing](https://github.com/rhysd/ss/blob/master/fixjson/prettyprint.gif)
 
 ## Installation
 
@@ -80,3 +81,5 @@ Distributed under the MIT License. Please see [LICENSE](LICENSE).
 [fixjson]: https://www.npmjs.com/package/fixjson
 [vim-fixjson]: https://github.com/rhysd/vim-fixjson
 [forked json5]: https://github.com/rhysd/json5
+[travis ci badge]: https://travis-ci.org/rhysd/fixjson.svg?branch=master
+[travis ci]: https://travis-ci.org/rhysd/fixjson
