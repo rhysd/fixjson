@@ -4,7 +4,7 @@ JSON fixer for Humans
 [![travis ci badge][]][travis ci]
 [![appveyor badge][]][appveyor]
 
-[fixjson][] is a source code fixer for humans using (relaxed) JSON5.
+[fixjson][] is a JSON file fixer/formatter for humans using (relaxed) JSON5.
 
 fixjson provides:
 
@@ -17,8 +17,8 @@ fixjson provides:
   - Hex numbers
   - Fixes single quotes to double quotes
 
-fixjson reads input as [relaxed json][forked json5] and outputs it as formatted JSON. Indent width
-is automatically detected. This tool aims to be used with editor extensions.
+fixjson reads an input in [relaxed JSON5][forked json5] format and outputs it in JSON format. Indent
+width is automatically detected. This CLI tool aims to be used with editor extensions.
 
 - [vim-fixjson][] (Vim)
 
