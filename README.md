@@ -1,5 +1,6 @@
 JSON fixer for Humans
 =====================
+[![npm version][]][fixjson]
 [![travis ci badge][]][travis ci]
 [![appveyor badge][]][appveyor]
 
@@ -86,3 +87,4 @@ Distributed under the MIT License. Please see [LICENSE](LICENSE).
 [travis ci]: https://travis-ci.org/rhysd/fixjson
 [appveyor badge]: https://ci.appveyor.com/api/projects/status/jqm3oenl6xwx7343?svg=true
 [appveyor]: https://ci.appveyor.com/project/rhysd/fixjson
+[npm version]: https://badge.fury.io/js/fixjson.svg
