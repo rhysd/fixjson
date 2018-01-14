@@ -1,0 +1,26 @@
+version: '{build}'
+clone_depth: 10
+environment:
+  NODE_VERSION: ""
+
+install:
+  - ps: Install-Product node $Env:NODE_VERSION
+  - node --version
+  - npm --version
+  - echo %PATH%
+  - npm install
+
+build: off
+
+test_script:
+  - npm run build
+  - npm run lint
+  - npm run test
+
+deploy: off
+
+notifications:
+  - provider: Email
+    on_build_status_changed: true
+    on_build_success: false
+    on_build_failure: false
