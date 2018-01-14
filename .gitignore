@@ -3,6 +3,8 @@
 /bin/main.d.ts
 /profile.txt
 /test/data/realworld
+/coverage
+/.nyc_output
 npm-debug.log
 isolate-0x*-v8.log
 *.js

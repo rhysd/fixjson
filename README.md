@@ -1,6 +1,7 @@
 JSON fixer for Humans
 =====================
 [![travis ci badge][]][travis ci]
+[![appveyor badge][]][appveyor]
 
 [fixjson][] is a source code fixer for humans using (relaxed) JSON5.
 
@@ -83,3 +84,5 @@ Distributed under the MIT License. Please see [LICENSE](LICENSE).
 [forked json5]: https://github.com/rhysd/json5
 [travis ci badge]: https://travis-ci.org/rhysd/fixjson.svg?branch=master
 [travis ci]: https://travis-ci.org/rhysd/fixjson
+[appveyor badge]: https://ci.appveyor.com/api/projects/status/jqm3oenl6xwx7343?svg=true
+[appveyor]: https://ci.appveyor.com/project/rhysd/fixjson
