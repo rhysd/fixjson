@@ -1,6 +1,6 @@
 {
   "name": "fixjson",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JSON fixer for humans using (relaxed) JSON5",
   "main": "index.js",
   "bin": {
