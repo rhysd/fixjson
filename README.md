@@ -9,7 +9,7 @@ JSON fixer for Humans
 fixjson provides:
 
 - Pretty-printing JSON5 input
-  - ES5 syntax is available to write up
+  - ES5 syntax is available to write up JSON
 - Fixes various failures while humans writing JSON
   - Fixes trailing commas objects or arrays
   - Fixes missing commas for elements of objects or arrays
@@ -19,10 +19,13 @@ fixjson provides:
   - Fixes single quotes to double quotes
 
 fixjson reads an input in [relaxed JSON5][forked json5] format and outputs it in JSON format. Indent
-width is automatically detected. This CLI tool aims to be used with editor extensions.
+width is automatically detected.
 
-- [vim-fixjson][] (Vim)
-- [ALE](https://github.com/w0rp/ale/pull/1284) (Vim, **ongoing**)
+This CLI tool aims to be used with editor extensions.
+
+- [vim-fixjson][] (dedicated Vim plugin)
+- [ALE](https://github.com/w0rp/ale/pull/1284) (Vim plugin, **ongoing**)
+- [neoformat][] (Vim plugin)
 
 ## Screenshots of Fixes
 
@@ -90,3 +93,4 @@ Distributed under the MIT License. Please see [LICENSE](LICENSE).
 [appveyor badge]: https://ci.appveyor.com/api/projects/status/jqm3oenl6xwx7343?svg=true
 [appveyor]: https://ci.appveyor.com/project/rhysd/fixjson
 [npm version]: https://badge.fury.io/js/fixjson.svg
+[neoformat]: https://github.com/sbdchd/neoformat
