@@ -26,7 +26,7 @@ This CLI tool aims to be used with editor extensions.
 - [vim-fixjson][] (dedicated Vim plugin)
 - [ALE](https://github.com/w0rp/ale/pull/1284) (Vim plugin, **ongoing**)
 - [neoformat][] (Vim plugin)
-- [vim-autoformat](https://github.com/Chiel92/vim-autoformat/pull/225) (Vim plugin, **ongoing**)
+- [vim-autoformat][] (Vim plugin)
 
 ## Screenshots of Fixes
 
@@ -95,3 +95,4 @@ Distributed under the MIT License. Please see [LICENSE](LICENSE).
 [appveyor]: https://ci.appveyor.com/project/rhysd/fixjson
 [npm version]: https://badge.fury.io/js/fixjson.svg
 [neoformat]: https://github.com/sbdchd/neoformat
+[vim-autoformat]: https://github.com/Chiel92/vim-autoformat
