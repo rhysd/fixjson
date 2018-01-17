@@ -78,7 +78,7 @@ all JSON files in the directory. If no path is given, it reads from STDIN.
 
 If `--write` (or `-w`) option is provided, it overwrites files.
 
-If `--indent` (or `-i`) is not provided, it detects indent spaces.
+If `--indent {num}` (or `-i {num}`) is not provided, it detects indent spaces.
 
 Please see `fixjson --help` for more details.
 

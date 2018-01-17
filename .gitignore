@@ -5,6 +5,7 @@
 /test/data/realworld
 /coverage
 /.nyc_output
+/test/**/*.d.ts
 npm-debug.log
 isolate-0x*-v8.log
 *.js
