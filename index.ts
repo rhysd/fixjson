@@ -149,17 +149,26 @@ export default class FixJSON {
         return JSON.stringify(src.parsed, null, src.indent) + '\n';
     }
 
+    private parseString(code: string, file: string) {
+        try {
+            return JSON5R.parse(code);
+        } catch (e) {
+            e.message = `${file}: ${e.message}`;
+            throw e;
+        }
+    }
+
     private async parseStdin(): Promise<Parsed> {
         const name = this.config.stdinFilename || '<stdin>';
         const code = await readFromStdin();
-        const parsed = JSON5R.parse(code);
+        const parsed = this.parseString(code, name);
         return { name, parsed, indent: this.indent(code) };
     }
 
     private async parseFile(path: string): Promise<Parsed> {
         const code = await readFile(path);
-        const parsed = JSON5R.parse(code);
-        const indent = detectIndent(code).indent || '  ';
+        const parsed = this.parseString(code, path);
+        const indent = this.indent(code);
         return { name: path, parsed, indent };
     }
 }
