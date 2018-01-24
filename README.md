@@ -24,7 +24,7 @@ width is automatically detected.
 This CLI tool aims to be used with editor extensions.
 
 - [vim-fixjson][] (dedicated Vim plugin)
-- [ALE](https://github.com/w0rp/ale/pull/1284) (Vim plugin, **ongoing**)
+- [ALE][] (Vim plugin)
 - [neoformat][] (Vim plugin)
 - [vim-autoformat][] (Vim plugin)
 
@@ -96,3 +96,4 @@ Distributed under the MIT License. Please see [LICENSE](LICENSE).
 [npm version]: https://badge.fury.io/js/fixjson.svg
 [neoformat]: https://github.com/sbdchd/neoformat
 [vim-autoformat]: https://github.com/Chiel92/vim-autoformat
+[ALE]: https://github.com/w0rp/ale
