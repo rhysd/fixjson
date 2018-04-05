@@ -98,7 +98,7 @@ interface Parsed {
 
 export default class FixJSON {
     public readonly config: Config;
-    private stdout: NodeJS.WriteStream;
+    private readonly stdout: NodeJS.WriteStream;
 
     constructor(config?: Config) {
         this.config = { write: false, minify: false, stdout: process.stdout, ...config };
