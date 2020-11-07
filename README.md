@@ -1,8 +1,6 @@
 JSON fixer for Humans
 =====================
 [![npm version][]][fixjson]
-[![travis ci badge][]][travis ci]
-[![appveyor badge][]][appveyor]
 
 [fixjson][] is a JSON file fixer/formatter for humans using (relaxed) JSON5.
 
@@ -89,10 +87,6 @@ Distributed under the MIT License. Please see [LICENSE](LICENSE).
 [fixjson]: https://www.npmjs.com/package/fixjson
 [vim-fixjson]: https://github.com/rhysd/vim-fixjson
 [forked json5]: https://github.com/rhysd/json5
-[travis ci badge]: https://travis-ci.org/rhysd/fixjson.svg?branch=master
-[travis ci]: https://travis-ci.org/rhysd/fixjson
-[appveyor badge]: https://ci.appveyor.com/api/projects/status/jqm3oenl6xwx7343?svg=true
-[appveyor]: https://ci.appveyor.com/project/rhysd/fixjson
 [npm version]: https://badge.fury.io/js/fixjson.svg
 [neoformat]: https://github.com/sbdchd/neoformat
 [vim-autoformat]: https://github.com/Chiel92/vim-autoformat
