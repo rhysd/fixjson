@@ -55,7 +55,7 @@ async function globOne(pattern: string): Promise<string[]> {
 
     const paths = [];
     for (const path of globbed) {
-        if (!await isDirectory(path)) {
+        if (!(await isDirectory(path))) {
             paths.push(path);
         }
         let pat = path;
