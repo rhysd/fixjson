@@ -1,6 +1,7 @@
 JSON fixer for Humans
 =====================
 [![npm version][]][fixjson]
+[![ci-badge][]][ci]
 
 [fixjson][] is a JSON file fixer/formatter for humans using (relaxed) JSON5.
 
@@ -88,6 +89,8 @@ Distributed under the MIT License. Please see [LICENSE](LICENSE).
 [vim-fixjson]: https://github.com/rhysd/vim-fixjson
 [forked json5]: https://github.com/rhysd/json5
 [npm version]: https://badge.fury.io/js/fixjson.svg
+[ci-badge]: https://github.com/rhysd/fixjson/workflows/CI/badge.svg?branch=ga&event=push
+[ci]: https://github.com/rhysd/fixjson/actions?query=workflow%3ACI
 [neoformat]: https://github.com/sbdchd/neoformat
 [vim-autoformat]: https://github.com/Chiel92/vim-autoformat
 [ALE]: https://github.com/w0rp/ale
