@@ -4,7 +4,7 @@ import * as assert from 'assert';
 import * as glob from 'glob';
 import FixJSON from '..';
 
-describe('JSON files in real world', function() {
+describe('JSON files in real world', function () {
     const files = glob.sync(path.join(__dirname, 'data/realworld/**/*.json'));
     files.push(path.join(__dirname, '../package.json'));
 
@@ -18,7 +18,7 @@ describe('JSON files in real world', function() {
         ) {
             continue;
         }
-        it(file, function() {
+        it(file, function () {
             this.timeout(60000);
             const json = fs.readFileSync(file, 'utf8');
             assert.ok(fixer.convertString(json));
