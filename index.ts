@@ -141,8 +141,13 @@ export default class FixJSON {
 
     private indent(code: string) {
         const { indent, minify } = this.config;
-        const spaces = minify ? '' : indent ? ' '.repeat(indent) : detectIndent(code).indent;
-        return spaces || '  ';
+        if (minify) {
+            return '';
+        }
+        if (indent) {
+            return ' '.repeat(indent);
+        }
+        return detectIndent(code).indent ?? '  ';
     }
 
     private unparse(src: Parsed): string {
