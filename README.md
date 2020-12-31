@@ -69,7 +69,7 @@ It installs `fixjson` command globally.
 ## Usage
 
 ```sh
-$ fixjson [--write|-w|--indent|-i] [paths...]
+fixjson [--write|--indent|--minify|--stdin-filename] [paths...]
 ```
 
 If paths are given, glob such as `dir/**/*.json` is available. If the path is a directory, it formats
