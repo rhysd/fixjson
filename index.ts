@@ -147,7 +147,7 @@ export default class FixJSON {
         if (typeof indent === 'number') {
             return ' '.repeat(indent);
         }
-        return detectIndent(code).indent ?? '  ';
+        return detectIndent(code).indent || '  ';
     }
 
     private unparse(src: Parsed): string {
