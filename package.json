@@ -48,7 +48,7 @@
     "@types/mocha": "^8.0.3",
     "@types/node": "^14.14.6",
     "@types/yargs": "^15.0.9",
-    "mocha": "^8.2.1",
+    "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "prettier": "^2.1.2",
     "tslint": "^5.20.1",
