@@ -1,0 +1,39 @@
+action.html#/assets/DOT:1  Uncaught (in promise) TOKENBALANCE-MEW: {"code":-32602,"message":"invalid argument 0: json: cannot unmarshal non-string into Go value of type common.Address"}
+Promise.then (async)
+f @ action.js:1
+(anonymous) @ action.js:1
+(anonymous) @ chunk-vendors-a523c416.js:1
+i @ chunk-vendors-a523c416.js:1
+f @ chunk-vendors-a523c416.js:1
+Ze.a.__weh.a.__weh @ chunk-vendors-a523c416.js:1
+A @ chunk-vendors-a523c416.js:1
+P @ chunk-vendors-a523c416.js:1
+Promise.then (async)
+j @ chunk-vendors-a523c416.js:1
+w @ chunk-vendors-a523c416.js:1
+(anonymous) @ chunk-vendors-a523c416.js:1
+I @ chunk-vendors-a523c416.js:1
+T @ chunk-vendors-a523c416.js:1
+Ge @ chunk-vendors-a523c416.js:1
+(anonymous) @ chunk-vendors-a523c416.js:1
+I @ chunk-vendors-a523c416.js:1
+T @ chunk-vendors-a523c416.js:1
+Ge @ chunk-vendors-a523c416.js:1
+(anonymous) @ chunk-vendors-a523c416.js:1
+I @ chunk-vendors-a523c416.js:1
+T @ chunk-vendors-a523c416.js:1
+Ge @ chunk-vendors-a523c416.js:1
+set value @ chunk-vendors-a523c416.js:1
+Z @ chunk-vendors-a523c416.js:22
+(anonymous) @ chunk-vendors-a523c416.js:22
+Promise.then (async)
+L @ chunk-vendors-a523c416.js:22
+B @ chunk-vendors-a523c416.js:22
+install @ chunk-vendors-a523c416.js:22
+use @ chunk-vendors-a523c416.js:1
+30209 @ action.js:1
+n @ action.js:1
+(anonymous) @ action.js:1
+n.O @ action.js:1
+(anonymous) @ action.js:1
+(anonymous) @ action.js:1
