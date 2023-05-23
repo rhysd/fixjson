@@ -1,0 +1,1 @@
+inject.js?settings=%7B%22evm%22%3A%7B%22inject%22%3A%7B%22disabled%22%3Afalse%2C%22timestamp%22%3A0%7D%7D%2C%22substrate%22%3A%7B%22injectPolkadotjs%22%3Afalse%7D%7D:1 hello from injected code

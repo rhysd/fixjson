@@ -1,0 +1,13 @@
+- name: Authorize Commit Signing
+  # You may pin to the exact commit or the version.
+  # uses: gobeyondidentity/auth-commit-sig@3193abaf3b528415031dc69ef0c0c3b09c13c308
+  uses: gobeyondidentity/auth-commit-sig@v0.6.0
+  with:
+    # API token for the Beyond Identity key management API. Should be stored as a secret in your repository, and referenced as, e.g.
+
+    api_token: {{ secrets.BYNDID_KEY_MGMT_API_TOKEN }}
+
+    api_token: 
+    # The commit reference to check. Defaults to HEAD, which will be the ref checked out by `actions/checkout`.
+
+    ref: # optional, default is HEAD
