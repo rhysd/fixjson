@@ -22,6 +22,7 @@ width is automatically detected.
 
 This CLI tool aims to be used with editor extensions.
 
+- [formatter.nvim][] (Neovim plugin)
 - [vim-fixjson][] (dedicated Vim plugin)
 - [ALE][] (Vim plugin)
 - [neoformat][] (Vim plugin)
@@ -81,6 +82,34 @@ If `--indent {num}` (or `-i {num}`) is not provided, it detects indent spaces.
 
 Please see `fixjson --help` for more details.
 
+## Editor Extension Integration
+### Formatter.nvim
+Extension homepage: [formatter.nvim][formatter.nvim]
+
+Configuration
+
+```lua
+local formatterStatus, formatter = pcall(require, "formatter")
+if formatterStatus then
+    local jsonFormatter = require("formatter.filetypes.json")
+
+    formatter.setup({
+        filetype = {
+            json = {jsonFormatter.fixjson}
+        }
+    })
+end
+```
+
+(Optional) Enable on-write formatting
+
+```lua
+vim.api.nvim_create_autocmd("BufWritePost", {
+    group = vim.api.nvim_create_augroup("AutoFormatOnSave", {clear = true})
+    pattern = "*.json",
+    command = ":FormatWrite"
+})
+```
 ## License
 
 Distributed under the MIT License. Please see [LICENSE](LICENSE).
@@ -94,3 +123,4 @@ Distributed under the MIT License. Please see [LICENSE](LICENSE).
 [neoformat]: https://github.com/sbdchd/neoformat
 [vim-autoformat]: https://github.com/Chiel92/vim-autoformat
 [ALE]: https://github.com/w0rp/ale
+[formatter.nvim]: https://github.com/mhartington/formatter.nvim
